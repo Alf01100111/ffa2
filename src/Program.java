@@ -125,9 +125,70 @@ public class Program {
     public static void doProcess(int x, double y, String s) {
 
     }
+    static boolean checkBoard(x, y){
+        if (x < fieldSizeX && y < fieldSizeY){
+            return true;
+        }
+    }
 
     static boolean checkWin(char c) {
-        if (field[0][0] == c && field[0][1] == c && field[0][2] == c) return true;
+        
+        int counter = 1;
+        
+        for (int x = 0; x < fieldSizeX; x++){
+            for (int y = 0; y < fieldSizeY; y++){
+                
+                for (int i = 1; i < WIN_COUNT; i++){    //вверх
+                    if (!(checkBoard(x, y - i))) break;                    
+                    if (field[x][y] == c && field[x][y - i] == c) == false break;
+                   
+                    counter += 1;
+                    if (counter == WIN_COUNT) return true;
+                }                
+               
+                for (int i = 1; i < WIN_COUNT; i++){    //вниз
+                    if (!(checkBoard(x, y + i))) break;
+                    if ((field[x][y] == c && field[x][y - i] == c)) == false break;
+                    
+                    counter += 1;
+                    if (counter == WIN_COUNT) return true;
+                }      
+                                  
+                for (int i = 1; i < WIN_COUNT; i++){    //вправо
+                    if (!(checkBoard(x + i, y))) break;
+                    if ((field[x][y] == c && field[x + i][y] == c)) == false break;
+                    
+                    counter += 1;
+                    if (counter == WIN_COUNT) return true;
+                }
+                
+                for (int i = 1; i < WIN_COUNT; i++){    //диагональ вверх
+                    if (!(checkBoard(x + i, y - i))) break;
+                    if ((field[x][y] == c && field[x + i][y - i] == c)) == false break;
+                    
+                    counter += 1;
+                    if (counter == WIN_COUNT) return true;
+                }
+                
+                for (int i = 1; i < WIN_COUNT; i++){    //диагональ вниз
+                    if (!(checkBoard(x + i, y + i))) break;
+                    if ((field[x][y] == c && field[x + i][y + i] == c)) == false break;
+                    
+                    counter += 1;
+                    if (counter == WIN_COUNT) return true;
+                }
+              }
+            }
+            else return false;
+            
+        }
+                
+                
+                  
+                    
+                    
+                
+        /*if (field[0][0] == c && field[0][1] == c && field[0][2] == c) return true;
         if (field[1][0] == c && field[1][1] == c && field[1][2] == c) return true;
         if (field[2][0] == c && field[2][1] == c && field[2][2] == c) return true;
 
@@ -138,7 +199,7 @@ public class Program {
         if (field[0][0] == c && field[1][1] == c && field[2][2] == c) return true;
         if (field[0][2] == c && field[1][1] == c && field[2][0] == c) return true;
 
-        return false;
+        return false;*/
     }
 
 

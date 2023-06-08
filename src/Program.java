@@ -148,7 +148,7 @@ public class Program {
                
                 for (int i = 1; i < WIN_COUNT; i++){    //вниз
                     if (!(checkBoard(x, y + i))) break;
-                    if ((field[x][y] == c && field[x][y - i] == c)) == false break;
+                    if ((field[x][y] == c && field[x][y + i] == c)) == false break;
                     
                     counter += 1;
                     if (counter == WIN_COUNT) return true;
